@@ -1,14 +1,13 @@
-.text-input {
+.password-input {
   width: 100%;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
   padding: 6px 12px;
-  margin-bottom: 30px;
 }
 
-.proceed-button {
+.generate-button {
   background: #00bcd4;
   border-radius: 3px;
   color: #fff;
@@ -17,35 +16,42 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  margin: 0;
+  margin-top: 30px;
   padding: 10px 20px;
   text-decoration: none;
   text-transform: uppercase;
   vertical-align: middle;
 }
 
-.proceed-button:hover {
+.generate-button:hover {
   background: #00acc1;
 }
 
-.proceed-button:active {
+.generate-button:active {
   background: #0097a7;
 }
 
-.proceed-button.disabled {
+.generate-button.disabled {
   background: #ccc;
   cursor: not-allowed;
 }
 
-.proceed-button.disabled:hover {
+.generate-button.disabled:hover {
   background: #ccc;
 }
 
-.proceed-button.disabled:active {
+.generate-button.disabled:active {
   background: #ccc;
 }
 
 .error {
   color: red;
+  margin-top: 5px;
+}
+
+.hint {
+  display: flex;
+  color: #999;
+  font-size: 12px;
   margin-top: 5px;
 }

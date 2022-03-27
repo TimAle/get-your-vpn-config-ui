@@ -12,6 +12,12 @@ const LoginForm = ({ onSubmit }) => {
     onSubmit(inviteCode)
   }
 
+  const handleKeyDown = ({ key }) => {
+    if (key === 'Enter') {
+      handleSubmit()
+    }
+  }
+
   return (
     <div>
       <p>
@@ -22,6 +28,7 @@ const LoginForm = ({ onSubmit }) => {
         type="text"
         placeholder="Enter your invite code here"
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
       <div
         className="proceed-button"

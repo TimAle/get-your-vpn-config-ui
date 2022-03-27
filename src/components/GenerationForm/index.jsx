@@ -14,8 +14,10 @@ const GenerationForm = ({ inviteCode }) => {
     setPassword(target.value);
   }
 
+  const disableButton = password.length < 4 || loading;
+
   const handleSubmit = async () => {
-     if (loading) return;
+     if (disableButton) return;
 
     setLoading(true);
 
@@ -39,9 +41,15 @@ const GenerationForm = ({ inviteCode }) => {
     setLoading(false);
   }
 
+  const handleKeyDown = ({ key }) => {
+    if (key === 'Enter') {
+      handleSubmit()
+    }
+  }
+
   const renderError = () => <div className="error">Failed to create .ovpn file: {error}</div>;
 
-  const buttonCN = cn('proceed-button', { disabled: loading });
+  const buttonCN = cn('generate-button', { disabled: disableButton });
 
   return (
     created
@@ -52,11 +60,15 @@ const GenerationForm = ({ inviteCode }) => {
               Create a password for your upcoming config file.
             </p>
             <input
-              className="text-input"
+              className="password-input"
               type="password"
-              placeholder="Type password for your upcoming config file"
+              placeholder="Type password for your upcoming config file (4+ characters)"
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
+            <span className="hint" >
+              Password must be at least 4 characters long.
+            </span>
             <div
               className={buttonCN}
               onClick={handleSubmit}>
