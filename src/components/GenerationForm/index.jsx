@@ -28,7 +28,7 @@ const GenerationForm = ({ inviteCode }) => {
     })
 
     if (response.ok) {
-      const { openvpn } = await response.json();
+      const openvpn = await response.json();
 
       setConfig(openvpn);
       setCreated(true);
