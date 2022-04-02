@@ -15,20 +15,26 @@ function useQuery() {
   return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
-function App() {
+const App = () => {
   const [inviteCode, setInviteCode] = useState(useQuery().get("invite_code"));
 
-  return inviteCode
-    ? <Content inviteCode={inviteCode} />
-    : <LoginForm onSubmit={setInviteCode} />;
-}
-
-const AppWithLayout = () => Layout(App);
-
-export default function QueryParamsExample() {
   return (
-    <Router>
-      <AppWithLayout />
-    </Router>
+    <Layout resetAppState={() => setInviteCode(null)}>
+      <AppBody inviteCode={inviteCode} setInviteCode={setInviteCode} />
+    </Layout>
   );
 }
+
+const AppBody = ({ inviteCode, setInviteCode }) => (
+  inviteCode
+    ? <Content inviteCode={inviteCode} />
+    : <LoginForm onSubmit={setInviteCode} />
+)
+
+const RoutedApp = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default RoutedApp;
