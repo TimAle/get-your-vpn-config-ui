@@ -1,5 +1,5 @@
 import logo from './openvpn.svg';
-import './index.css';
+import './index.sass';
 
 const Layout = ({ resetAppState, children }) => (
   <div className="app">

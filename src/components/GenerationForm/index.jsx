@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import cn from 'classnames';
 import Success from '../Success';
-import './index.css';
+import './index.sass';
 
 const GenerationForm = ({ inviteCode }) => {
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ const GenerationForm = ({ inviteCode }) => {
   const disableButton = password.length < 4 || loading;
 
   const handleSubmit = async () => {
-     if (disableButton) return;
+    if (disableButton) return;
 
     setLoading(true);
 
@@ -55,28 +55,28 @@ const GenerationForm = ({ inviteCode }) => {
     created
       ? <Success config={config} />
       : (
-          <div>
-            <p>
-              Create a password for your upcoming config file.
-            </p>
-            <input
-              className="password-input"
-              type="password"
-              placeholder="Type password for your upcoming config file (4+ characters)"
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-            />
-            <span className="hint" >
-              Password must be at least 4 characters long.
-            </span>
-            <div
-              className={buttonCN}
-              onClick={handleSubmit}>
-                Generate config
-            </div>
-            {error && renderError()}
+        <div>
+          <p>
+            Create a password for your upcoming config file.
+          </p>
+          <input
+            className="password-input"
+            type="password"
+            placeholder="Type password for your upcoming config file (4+ characters)"
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <span className="hint" >
+            Password must be at least 4 characters long.
+          </span>
+          <div
+            className={buttonCN}
+            onClick={handleSubmit}>
+            Generate config
           </div>
-        )
+          {error && renderError()}
+        </div>
+      )
   );
 }
 

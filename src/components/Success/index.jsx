@@ -1,4 +1,4 @@
-import './index.css'
+import './index.sass'
 
 const Success = ({ config }) => {
   const decoded = window.atob(config.ovpn_file)

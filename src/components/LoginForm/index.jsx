@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './index.css'
+import cn from 'classnames';
+import './index.sass'
 
 const LoginForm = ({ onSubmit }) => {
   const [inviteCode, setInviteCode] = useState('');
@@ -9,7 +10,9 @@ const LoginForm = ({ onSubmit }) => {
   }
 
   const handleSubmit = () => {
-    onSubmit(inviteCode)
+    if (inviteCode.length > 0) {
+      onSubmit(inviteCode);
+    }
   }
 
   const handleKeyDown = ({ key }) => {
@@ -17,6 +20,10 @@ const LoginForm = ({ onSubmit }) => {
       handleSubmit()
     }
   }
+
+  const buttonCN = cn('proceed-button', {
+    disabled: !inviteCode
+  })
 
   return (
     <div>
@@ -31,7 +38,7 @@ const LoginForm = ({ onSubmit }) => {
         onKeyDown={handleKeyDown}
       />
       <div
-        className="proceed-button"
+        className={buttonCN}
         onClick={handleSubmit}>
           Proceed
       </div>
