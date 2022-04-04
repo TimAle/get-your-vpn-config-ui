@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import './index.sass'
 
 const LoginForm = ({ onSubmit }) => {
+  const { t } = useTranslation();
   const [inviteCode, setInviteCode] = useState('');
 
   const handleChange = ({ target }) => {
@@ -28,19 +30,19 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <div>
       <p>
-        Enter your invite code to get your personal OpenVPN config file.
+        {t('login.title')}
       </p>
       <input
         className="text-input"
         type="text"
-        placeholder="Enter your invite code here"
+        placeholder={t('login.placeholder')}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
       <div
         className={buttonCN}
         onClick={handleSubmit}>
-          Proceed
+        {t('login.proceed')}
       </div>
     </div>
   );

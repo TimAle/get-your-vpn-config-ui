@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './i18n/config';
 import './index.sass';
 import App from './App';
 

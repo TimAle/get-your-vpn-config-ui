@@ -1,0 +1,28 @@
+{
+  "test": "Тест",
+  "common": {
+    "title": "OpenVPN Config Generator",
+    "description": "Сгенерируй персональный конфиг OpenVPN",
+    "loading": "Ожидайте..."
+  },
+  "errors": {
+    "failedInviteFetch": "Не удалось получить информацию связанную с введенным приглашением: {{error}}",
+    "generationFailed": "Не удалось создать .ovpn файл: {{error}}"
+  },
+  "login": {
+    "title": "Введите код-приглашение, чтобы получить персональный конфиг для OpenVPN",
+    "placeholder": "Сюда вводить код",
+    "proceed": "Продолжить"
+  },
+  "generate": {
+    "title": "Придумайте пароль для своего OpenVPN-конфига",
+    "placeholder": "Пароль для файла (4 символа или больше)",
+    "passwordHint": "Пароль должен быть длиннее 4-х символов",
+    "submit": "Создать конфигурацию"
+  },
+  "success": {
+    "title": "Получилось!",
+    "description": "Твой конфиг для OpenVPN готов.",
+    "download": "Скачать"
+  }
+}
