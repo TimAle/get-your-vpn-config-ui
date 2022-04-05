@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next';
 import Success from '../Success'
 import GenerationForm from '../GenerationForm'
 
 const Content = ({ inviteCode }) => {
+  const { t } = useTranslation();
   const [config, setConfig] = useState({})
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
@@ -27,9 +29,9 @@ const Content = ({ inviteCode }) => {
 
   return (
     loading
-      ? <div>Loading...</div>
+      ? <div>{t('common.loading')}</div>
       : error
-        ? <div>Failed to fetch data associated with current invite code: {error}</div>
+        ? <div>{t('errors.failedInviteFetch', { error })}</div>
         : config
           ? <Success config={config} />
           : <GenerationForm inviteCode={inviteCode} />

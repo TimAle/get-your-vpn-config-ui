@@ -1,0 +1,28 @@
+{
+  "test": "Test",
+  "common": {
+    "title": "OpenVPN Config Generator",
+    "description": "Get Your Personal OpenVPN Config File",
+    "loading": "Loading..."
+  },
+  "errors": {
+    "failedInviteFetch": "Failed to fetch data associated with current invite code: {{error}}",
+    "generationFailed": "Failed to create .ovpn file: {{error}}"
+  },
+  "login": {
+    "title": "Enter your invite code to get your personal OpenVPN config file",
+    "placeholder": "Enter your invite code here",
+    "proceed": "Proceed"
+  },
+  "generate": {
+    "title": "Create a password for your upcoming config file",
+    "placeholder": "Type password for your upcoming config file (4+ characters)",
+    "passwordHint": "Password must be at least 4 characters long",
+    "submit": "Generate config"
+  },
+  "success": {
+    "title": "Success!",
+    "description": "Your OpenVPN config file is ready.",
+    "download": "Download"
+  }
+}

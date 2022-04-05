@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import Success from '../Success';
 import './index.sass';
 
 const GenerationForm = ({ inviteCode }) => {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [created, setCreated] = useState(false);
@@ -47,7 +49,7 @@ const GenerationForm = ({ inviteCode }) => {
     }
   }
 
-  const renderError = () => <div className="error">Failed to create .ovpn file: {error}</div>;
+  const renderError = () => <div className="error">{t('errors.generationFailed', { error })}</div>;
 
   const buttonCN = cn('generate-button', { disabled: disableButton });
 
@@ -57,22 +59,23 @@ const GenerationForm = ({ inviteCode }) => {
       : (
         <div>
           <p>
-            Create a password for your upcoming config file.
+            {t('generate.title')}
           </p>
           <input
             className="password-input"
             type="password"
-            placeholder="Type password for your upcoming config file (4+ characters)"
+            placeholder={t('generate.placeholder')}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
           <span className="hint" >
-            Password must be at least 4 characters long.
+            {t('generate.passwordHint')}
           </span>
           <div
             className={buttonCN}
-            onClick={handleSubmit}>
-            Generate config
+            onClick={handleSubmit}
+          >
+            {t('generate.submit')}
           </div>
           {error && renderError()}
         </div>
