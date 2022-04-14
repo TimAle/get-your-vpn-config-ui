@@ -7,6 +7,7 @@ import {
 import Content from "./components/MainContainer";
 import Layout from "./components/Layout";
 import LoginForm from "./components/LoginForm";
+import Guide from "./components/Guide";
 
 
 function useQuery() {
@@ -26,9 +27,13 @@ const App = () => {
 }
 
 const AppBody = ({ inviteCode, setInviteCode }) => (
-  inviteCode
-    ? <Content inviteCode={inviteCode} />
-    : <LoginForm onSubmit={setInviteCode} />
+  <>
+    {inviteCode
+      ? <Content inviteCode={inviteCode} />
+      : <LoginForm onSubmit={setInviteCode} />}
+    <Guide />
+  </>
+
 )
 
 const RoutedApp = () => (
