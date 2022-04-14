@@ -1,0 +1,34 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - name: Run tests
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: test
+      - name: Build if main
+        uses: borales/actions-yarn@v2.3.0
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          cmd: build
+      - name: Deploy if main
+        uses: nekitcorp/yandex-storage-website-action@v1
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          accessKeyId: ${{ secrets.YDX_ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.YDX_SECRET_ACCESS_KEY }}
+          bucket: ${{ secrets.YDX_BUCKET_NAME }}
+          path: "./build"
+          clear: true
