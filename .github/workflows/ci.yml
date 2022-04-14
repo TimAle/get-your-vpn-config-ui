@@ -24,11 +24,9 @@ jobs:
         with:
           cmd: build
       - name: Deploy if main
-        uses: nekitcorp/yandex-storage-website-action@v1
+        run: aws --endpoint-url=https://storage.yandexcloud.net s3 cp --recursive ./build/ s3://${{ secrets.YDX_BUCKET_NAME }}/
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        with:
-          accessKeyId: ${{ secrets.YDX_ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.YDX_SECRET_ACCESS_KEY }}
-          bucket: ${{ secrets.YDX_BUCKET_NAME }}
-          path: "./build"
-          clear: true
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YDX_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YDX_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ru-central1
