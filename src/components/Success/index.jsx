@@ -4,7 +4,7 @@ import './index.sass'
 const Success = ({ config }) => {
   const { t } = useTranslation();
   const decoded = window.atob(config.ovpn_file)
-  const byteCharacters = new Blob([decoded], { type: 'text/plain' })
+  const byteCharacters = new Blob([decoded], { type: 'text/ovpn' })
   const url = URL.createObjectURL(byteCharacters);
 
   return (
