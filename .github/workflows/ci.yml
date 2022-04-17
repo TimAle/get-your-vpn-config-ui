@@ -23,6 +23,8 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           cmd: build
+        env:
+          REACT_APP_LAMBDA_URL:  ${{ secrets.YDX_LAMBDA_HOST }}
       - name: Deploy if main
         run: aws --endpoint-url=https://storage.yandexcloud.net s3 cp --recursive ./build/ s3://${{ secrets.YDX_BUCKET_NAME }}/
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
